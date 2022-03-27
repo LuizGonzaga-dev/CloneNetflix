@@ -9,9 +9,15 @@ namespace NetflixClone.ViewModels
     public class HomeViewModel
     {
         public List<TipoListaFilmes> AllMoviesAndCategories { get; set; }
-        public HomeViewModel(List<TipoListaFilmes> allMoviesAndCategories)
+        public MovieDetails FeturedMovie { get; set; }
+        public HomeViewModel()
+        {
+
+        }
+        public HomeViewModel(List<TipoListaFilmes> allMoviesAndCategories, MovieDetails featuredMovie)
         {
             AllMoviesAndCategories = allMoviesAndCategories;
+            FeturedMovie = featuredMovie;
         }
     }
 }

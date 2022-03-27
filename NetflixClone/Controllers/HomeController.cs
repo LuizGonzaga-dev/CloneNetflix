@@ -7,6 +7,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NetflixClone.Controllers
@@ -19,7 +20,7 @@ namespace NetflixClone.Controllers
         {
             _logger = logger;
         }
-
+        
         public const string API_BASE = "https://api.themoviedb.org/3";
         public async Task<Movie> GetAllInformations(string endPoint)
         {
@@ -33,14 +34,14 @@ namespace NetflixClone.Controllers
 
             if (response.IsSuccessful)
             {
-                var movie = JsonConvert.DeserializeObject<Movie>(response.Content);
+                Movie movie = JsonConvert.DeserializeObject<Movie>(response.Content);
                 
                 return movie;
             }
 
             return new Movie();
         }
-
+                
         public const string API_KEY = "951a448ab9836ab78c768c6a46042d43";
         public async Task<IActionResult> Index()
         {
@@ -101,9 +102,53 @@ namespace NetflixClone.Controllers
                 ListaFilmes = await GetAllInformations("/discover/movie?with_genres=99&language=pt-BR&api_key=" + API_KEY)
             });
 
-            var vm = new HomeViewModel(jesusCristo);
+            Random random = new Random();
+
+            int maxRandom = jesusCristo.First(x => x.Slug.Equals("originals")).ListaFilmes.results.Count() - 1;
+            var featuredMovie = jesusCristo.First(x => x.Slug.Equals("originals")).ListaFilmes.results[random.Next(0,maxRandom)];
+
+            featuredMovie.EspecificInformation = await GetEspecificInformations(featuredMovie.id, "tv");
+           
+            var vm = new HomeViewModel(jesusCristo, featuredMovie);
+            
 
             return View(vm);
+        }
+
+        public async Task<EspecificInformation> GetEspecificInformations(int? movieId, string movieType)
+        {
+            string endPoint = "";
+
+            if (movieId != null)
+            {
+                switch (movieType)
+                {
+                    case "movie":
+                        endPoint +="/movie/" + movieId + "?language=pt-BR&api_key=" + API_KEY;
+                        break;
+
+                    case "tv":
+                        endPoint += "/tv/" + movieId + "?language=pt-BR&api_key=" + API_KEY;
+                        break;
+                }
+            }
+
+            var client = new RestClient(API_BASE + endPoint);
+
+            client.Timeout = -1;
+
+            var request = new RestRequest(Method.GET);
+
+            var response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful)
+            {
+                EspecificInformation especificInformation = JsonConvert.DeserializeObject<EspecificInformation>(response.Content);
+
+                return especificInformation;
+            }
+
+            return new EspecificInformation();
         }
 
         public IActionResult Privacy()

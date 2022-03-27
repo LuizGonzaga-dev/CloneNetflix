@@ -8,7 +8,6 @@ C:\Users\luizg\source\repos\NetflixClone\NetflixClone\bin\Debug\netcoreapp3.1\Ne
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\bin\Debug\netcoreapp3.1\NetflixClone.pdb
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\bin\Debug\netcoreapp3.1\NetflixClone.Views.dll
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\bin\Debug\netcoreapp3.1\NetflixClone.Views.pdb
-C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\NetflixClone.csproj.AssemblyReference.cache
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\NetflixClone.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\NetflixClone.AssemblyInfoInputs.cache
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\NetflixClone.AssemblyInfo.cs
@@ -38,3 +37,6 @@ C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\Ne
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\NetflixClone.csproj.CopyComplete
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\bin\Debug\netcoreapp3.1\RestSharp.dll
 C:\Users\luizg\source\repos\NetflixClone\NetflixClone\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\Razor\Views\Home\_MovieList.cshtml.g.cs
+C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\Razor\Views\Home\_FeaturedMovie.cshtml.g.cs
+C:\Users\luizg\source\repos\NetflixClone\NetflixClone\obj\Debug\netcoreapp3.1\NetflixClone.csproj.AssemblyReference.cache

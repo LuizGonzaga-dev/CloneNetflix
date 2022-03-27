@@ -20,6 +20,7 @@ namespace NetflixClone.Models
         public string poster_path { get; set; }
         public double vote_average { get; set; }
         public int vote_count { get; set; }
+        public EspecificInformation? EspecificInformation { get; set; }
 
         public MovieDetails()
         {}

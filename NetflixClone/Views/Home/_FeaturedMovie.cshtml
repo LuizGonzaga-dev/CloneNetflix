@@ -1,0 +1,37 @@
+﻿@model NetflixClone.Models.MovieDetails
+
+@{ 
+    var src = "https://image.tmdb.org/t/p/original" + Model.EspecificInformation.backdrop_path;
+    var year = Model.first_air_date.Split('-')[0];
+    var generos = "";
+    foreach(var g in Model.EspecificInformation.genres)
+    {
+        generos += g.name;
+        if(g != Model.EspecificInformation.genres.Last())
+        {
+            generos += ", ";
+        }
+    }
+
+} 
+
+<div class="featured" style="background-image: url(@src)">
+    <div class="featured--vertical">
+        <div class="featured--horizontal">
+            <div class="featured--name">@Model.original_name</div>
+            <div class="featured--info">
+                <div class="featured--points">@Model.vote_average pontos</div>
+                <div class="featured--year">@year</div>
+                <div class="featured--seasons">
+                    @(Model.EspecificInformation.number_of_seasons)  @(Model.EspecificInformation.number_of_seasons > 1 ? "temporadas" : "temporada")
+                </div>
+            </div>
+            <div class="featured--description">@Model.overview</div>
+            <div class="featured--bottons">
+                <a class="featured--watchButton" href="/watch/@Model.id">► Assistir</a>
+                <a class="featured--listButton" href="/list/add/@Model.id">+ Minha lista</a>
+            </div>
+            <div class="featured--generos">Gêneros: @generos</div>
+        </div>
+    </div>
+</div>

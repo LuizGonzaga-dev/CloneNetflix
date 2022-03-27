@@ -1,0 +1,14 @@
+﻿@model NetflixClone.Models.Movie
+
+@if(Model.results.Count > 0)
+{
+    
+        @foreach(var title in Model.results)
+        {
+            var src = "https://image.tmdb.org/t/p/w300" + title.poster_path;
+            <div class="movieRow--item">
+                <img src="@src" alt="@title.original_name" />
+            </div>
+        }
+    
+}

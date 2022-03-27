@@ -1,15 +1,20 @@
 ﻿@model NetflixClone.ViewModels.HomeViewModel
 
-@*@{
-    ViewData["Title"] = "Home Page";
-}*@
+@{
+    ViewData["Title"] = "NetflixClone";
+}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="movieRow">
     
+    @await Html.PartialAsync("_FeaturedMovie", Model.FeturedMovie) 
+
     @foreach(var h in Model.AllMoviesAndCategories)
     {
-        <p>@h.Title</p>
+        <h2>@h.Title</h2>
+        <div class="movieRow--listArea">
+            <div class="movieRow--list">
+                @await Html.PartialAsync("_MovieList", h.ListaFilmes)
+            </div>
+        </div>
     }
 </div>
